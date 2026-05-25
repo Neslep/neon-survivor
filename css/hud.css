@@ -1,0 +1,218 @@
+.hud {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  pointer-events: none;
+  z-index: 3;
+  font-family: "VT323", monospace;
+}
+.hud-l,
+.hud-r {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hud-r {
+  align-items: flex-end;
+}
+.hud-row {
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow:
+    0 0 8px rgba(0, 0, 0, 0.9),
+    0 0 14px rgba(77, 208, 255, 0.35);
+  line-height: 1;
+}
+.hud-row .lbl {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 13px;
+  letter-spacing: 3px;
+  margin-right: 8px;
+  font-family: "Press Start 2P", monospace;
+}
+.hud-row .val {
+  font-variant-numeric: tabular-nums;
+}
+.hp-wrap {
+  position: fixed;
+  top: 62px;
+  left: 22px;
+  right: 22px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+  overflow: hidden;
+  z-index: 3;
+  pointer-events: none;
+}
+.hp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff3860, #ff00aa);
+  width: 100%;
+  transition: width 0.12s;
+  box-shadow: 0 0 10px rgba(255, 56, 96, 0.6);
+}
+.xp-wrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  z-index: 3;
+  pointer-events: none;
+}
+.xp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4dd0ff, #b14dff);
+  width: 0%;
+  transition: width 0.12s;
+  box-shadow: 0 0 12px rgba(77, 208, 255, 0.7);
+}
+.combo {
+  position: fixed;
+  top: 90px;
+  right: 22px;
+  font-family: "Press Start 2P", monospace;
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffcc44;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s;
+  text-shadow: 0 0 10px rgba(255, 204, 68, 0.8);
+  z-index: 3;
+  letter-spacing: 2px;
+}
+.combo.show {
+  opacity: 1;
+}
+.combo.big {
+  font-size: 26px;
+  color: #ff00aa;
+  text-shadow: 0 0 14px rgba(255, 0, 170, 0.8);
+}
+.wave-toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Press Start 2P", monospace;
+  font-size: 28px;
+  color: #ff00aa;
+  text-shadow:
+    0 0 18px rgba(255, 0, 170, 0.9),
+    0 0 30px rgba(255, 0, 170, 0.5);
+  letter-spacing: 6px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 4;
+  text-align: center;
+  animation: none;
+}
+.wave-toast.show {
+  animation: waveIn 2.4s ease-out forwards;
+}
+@keyframes waveIn {
+  0% {
+    opacity: 0;
+    letter-spacing: 18px;
+    transform: translate(-50%, -50%) scale(1.4);
+  }
+  20% {
+    opacity: 1;
+    letter-spacing: 6px;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    letter-spacing: 14px;
+  }
+}
+.btn-ctrl {
+  position: fixed;
+  top: 18px;
+  width: 42px;
+  height: 42px;
+  background: rgba(7, 7, 15, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-family: "VT323", monospace;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 4;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: all 0.15s;
+}
+.btn-ctrl:hover {
+  background: rgba(77, 208, 255, 0.15);
+  border-color: #4dd0ff;
+}
+.btn-pause {
+  right: 22px;
+  display: none;
+}
+.btn-pause.show {
+  display: flex;
+}
+.btn-mute {
+  right: 74px;
+  display: none;
+}
+.btn-mute.show {
+  display: flex;
+}
+.btn-mute.off {
+  opacity: 0.45;
+}
+@media (max-width: 600px) {
+  .hud {
+    padding: 12px 14px;
+  }
+  .hud-row {
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+  .hud-row .lbl {
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-right: 5px;
+  }
+  .hp-wrap {
+    top: 54px;
+    left: 14px;
+    right: 14px;
+  }
+  .combo {
+    top: 78px;
+    right: 14px;
+    font-size: 15px;
+  }
+  .combo.big {
+    font-size: 20px;
+  }
+  .btn-pause {
+    right: 14px;
+  }
+  .btn-mute {
+    right: 62px;
+  }
+  .wave-toast {
+    font-size: 20px;
+    letter-spacing: 4px;
+  }
+}
